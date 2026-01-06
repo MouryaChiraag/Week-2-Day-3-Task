@@ -1,0 +1,241 @@
+/* =======================
+   GLOBAL
+   ======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  overflow-x: hidden;
+}
+
+/* =======================
+   NAVBAR
+   ======================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+/* Desktop Menu */
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #222;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.nav-menu a:hover {
+  color: #e91e63;
+}
+
+/* Hide checkbox */
+#nav-toggle {
+  display: none;
+}
+
+/* =======================
+   HAMBURGER ICON
+   ======================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #111;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* =======================
+   MOBILE MENU
+   ======================= */
+.close-menu {
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+  align-self: flex-end;
+}
+
+/* --- MOBILE & TABLET --- */
+@media (max-width: 768px) {
+
+  /* show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* hide desktop nav */
+  .nav-menu {
+    display: none;
+  }
+
+  /* by default hamburger visible, close button hidden */
+  #nav-toggle:not(:checked) ~ .hamburger {
+    display: flex;
+  }
+  #nav-toggle:not(:checked) ~ .nav-menu .close-menu {
+    display: none;
+  }
+
+  /* When checked → open menu */
+  #nav-toggle:checked ~ .nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 260px;
+    height: 100vh;
+    background: white;
+    padding: 70px 20px;
+    gap: 25px;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+    z-index: 1200;
+  }
+
+  /* Hide hamburger when menu is opened */
+  #nav-toggle:checked ~ .hamburger {
+    display: none;
+  }
+
+  /* Show close button when menu is open */
+  #nav-toggle:checked ~ .nav-menu .close-menu {
+    display: block;
+  }
+
+  @keyframes slideIn {
+    from { right: -260px; }
+    to { right: 0; }
+  }
+}
+
+/* =======================
+   HERO SECTION
+   ======================= */
+.hero {
+  height: 70vh;
+  background: url("images/hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  color: white;
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin: 15px 0 25px;
+}
+
+.cta-btn {
+  padding: 12px 28px;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile Hero */
+@media (max-width: 768px) {
+  .hero {
+    height: 55vh;
+    padding: 20px;
+  }
+  .hero-text h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* =======================
+   PRODUCT GRID
+   ======================= */
+.products-section {
+  padding: 60px 25px;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.product-card {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* =======================
+   FOOTER
+   ======================= */
+.footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
